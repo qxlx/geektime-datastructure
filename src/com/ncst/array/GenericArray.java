@@ -66,7 +66,7 @@ public class GenericArray<T> {
         return -1;
     }
 
-    //?? add romove
+    //添加
     public void add(T t) {
         data[size++] = t;
     }
@@ -77,6 +77,25 @@ public class GenericArray<T> {
 
     public void addLast(T t) {
         data[size] = t;
+    }
+
+    // 删除 index 位置的元素，并返回
+    public T remove(int index) {
+        checkIndexForRemove(index);
+
+        T ret = data[index];
+        for (int i = index + 1; i < size; i++) {
+            data[i - 1] = data[i];
+        }
+        size --;
+        data[size] = null;
+
+        // 缩容
+        if (size == data.length / 4 && data.length / 2 != 0) {
+            resize(data.length / 2);
+        }
+
+        return ret;
     }
 
     //实现动态扩容
