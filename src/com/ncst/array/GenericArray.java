@@ -4,6 +4,7 @@ package com.ncst.array;
  * @author i
  * @create 2019/11/2 21:42
  * @Description ArrayList实现
+ *
  */
 public class GenericArray<T> {
     private T[] data;
